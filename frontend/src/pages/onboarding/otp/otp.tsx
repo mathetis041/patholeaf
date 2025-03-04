@@ -1,13 +1,23 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Otp = () => {
     const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
-    // const [isError, setIsError] = useState<boolean>(false); // Track error state
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-    // const [isFilled, setIsFilled] = useState<boolean>(false)
+    const [timer, setTimer] = useState<number>(0); // Timer for resend OTP
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        let countdown: ReturnType<typeof setInterval>;
+        if (timer > 0) {
+            countdown = setInterval(() => {
+                setTimer((prev) => prev - 1);
+            }, 1000);
+        }
+
+        return () => clearInterval(countdown);
+    }, [timer]);
 
     const handleChange = (value: string, index: number) => {
         if (isNaN(Number(value))) return;
@@ -16,10 +26,6 @@ const Otp = () => {
         newOtp[index] = value;
         setOtp(newOtp);
 
-        // Clear error state on input
-        // if (isError) {
-        //     setIsError(false);
-        // }
 
         // Only move focus if a value is entered in the current box
         if (value !== "" && index < otp.length - 1) {
@@ -53,19 +59,16 @@ const Otp = () => {
 
     const handleSubmit = () => {
         if (otp.some((value) => value === "")) {
-            // setIsError(true);// Trigger error if any box is empty
             inputRefs.current[0]?.focus(); //Resetting focus to the firdst input
         } else {
-            // setIsFilled(true);
-            // setIsError(false);
             navigate("/changepassword");
         }
     };
 
     const handleResend = () => {
+        setTimer(60); // Start 1-minute timer
         alert("OTP Resent!");
     };
-
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-[#F0FDF4] p-4">
             <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
@@ -91,10 +94,6 @@ const Otp = () => {
                         />
                     ))}
                 </div>
-                {/* {isError && (
-                    <p className="text-sm text-red-600 text-center">Please fill out all fields.</p>
-                )}
-                {isFilled && <p className="text-center text-green-600 mt-2">OTP Verified! Redirecting...</p>} */}
                 <button
                     onClick={handleSubmit}
                     className={`w-full py-2 rounded-md transition ${otp.every((val) => val !== "") ? "bg-green-600 text-white cursor-pointer" : "bg-gray-400 text-gray-200 cursor-not-allowed"
@@ -109,9 +108,10 @@ const Otp = () => {
                         Didn’t receive the code?{" "}
                         <button
                             onClick={handleResend}
-                            className="text-green-600 hover:underline"
+                            className={`hover:underline ${timer > 0 ? "text-gray-500 cursor-not-allowed" : "cursor-pointer text-green-600"}`}
+                            disabled={timer > 0}
                         >
-                            Resend OTP
+                            {timer > 0 ? `Resend OTP in ${timer}s` : "Resend OTP"}
                         </button>
                     </p>
                 </div>

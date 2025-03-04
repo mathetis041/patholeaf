@@ -180,11 +180,11 @@ const Login: React.FC = () => {
                         </div>
 
 
-                        <p className="text-sm text-gray-500 mb-8 text-left cursor-pointer">
-                            By signing up, you agree to our <Link to="/" className="text-green-600 text-xs">Terms of Service </Link>
+                        <p className="text-sm text-gray-500 mb-8 text-left">
+                            By signing up, you agree to our <Link to="/" className="text-green-600 text-xs cursor-pointer">Terms of Service </Link>
                         </p>
                         <button
-                            className="w-1/2 p-2 bg-green-600 rounded-full text-white"
+                            className="w-1/2 p-2 bg-green-600 rounded-full text-white cursor-pointer"
                             onClick={handleSignupData}
                         >
                             Sign Up
@@ -196,13 +196,13 @@ const Login: React.FC = () => {
                     </div>
                     <p className="mt-4 text-sm text-gray-500">Or continue with</p>
                     <div className="w-3/4 mt-10 flex justify-between">
-                        <button>
+                        <button className="cursor-pointer">
                             <img src={cloudImages.facebook} width={20} height={20} alt="facebook logo" />
                         </button>
-                        <button>
+                        <button className="cursor-pointer">
                             <img src={cloudImages.instagram} width={20} height={20} alt="instagram logo" />
                         </button>
-                        <button>
+                        <button className="cursor-pointer">
                             <img src={cloudImages.spaceX} width={20} height={20} alt="twitter logo" />
                         </button>
                         {/* Add social login buttons here */}

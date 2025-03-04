@@ -32,6 +32,7 @@ const ForgotPassword = () => {
                 <div className="flex flex-col items-center justify-center text-center py-10 md:m-auto lg:w-2/3 xl:w-1/2">
                     <h1 className="text-3xl text-green-600 font-bold mb-4">PathoLeaf</h1>
                     <p className="mb-10 text-gray-500 text-md font-medium md:mb-8">Forgot Password?</p>
+                    <p className="text-sm w-3/4 mb-5 text-gray-500 md:mb-8 md:w-full">Enter your email address Ade*******@gmail.com to get your reset OTP</p>
                     <div className="p-4 bg-white">
                         {/* Email section */}
                         <div className="mb-10">
@@ -64,7 +65,7 @@ const ForgotPassword = () => {
                             {mailWarning && <p className="text-[#EF4444] text-xs text-left">{mailWarning}</p>}
                         </div>
                         <button
-                            className="w-full p-2 bg-green-600 rounded-lg text-white mb-10"
+                            className="w-full p-2 bg-green-600 rounded-lg text-white mb-10 cursor-pointer"
                             onClick={handleForgotPassword}
                         >
                             Send OTP

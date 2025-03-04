@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Login: React.FC = () => {
     const [mail, setMail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const [isMailFocused, setIsMailFocused] = useState(false);
+    const [isMailFocused, setIsMailFocused] = useState<boolean>(false);
     const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [mailWarning, setMailWarning] = useState<string>("");
@@ -141,7 +141,7 @@ const Login: React.FC = () => {
                             </Link>
                         </p>
                         <button
-                            className="w-1/2 p-2 bg-green-600 rounded-full text-white"
+                            className="w-1/2 p-2 bg-green-600 rounded-full text-white cursor-pointer"
                             onClick={handleLoginData}
                         >
                             Login
@@ -153,13 +153,13 @@ const Login: React.FC = () => {
                     </div>
                     <p className="mt-4 text-sm text-gray-500">Or continue with</p>
                     <div className="w-3/4 mt-10 flex justify-between">
-                        <button>
+                        <button className="cursor-pointer">
                             <img src={cloudImages.facebook} width={20} height={20} alt="facebook logo" />
                         </button>
-                        <button>
+                        <button className="cursor-pointer">
                             <img src={cloudImages.instagram} width={20} height={20} alt="instagram logo" />
                         </button>
-                        <button>
+                        <button className="cursor-pointer">
                             <img src={cloudImages.spaceX} width={20} height={20} alt="twitter logo" />
                         </button>
                         {/* Add social login buttons here */}
