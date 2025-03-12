@@ -6,7 +6,8 @@ const cloudImages = {
     seePassword: "https://res.cloudinary.com/doijevrqo/image/upload/v1737041447/seepassword_xblhq3.png",
     padlock: "https://res.cloudinary.com/doijevrqo/image/upload/v1736359485/uil_padlock_lshlgp.png",
     mail: "https://res.cloudinary.com/doijevrqo/image/upload/v1736359492/mdi-light_email_bjpgpb.png",
-    profile: "https://res.cloudinary.com/doijevrqo/image/upload/v1737044748/personicon_eakhfo.png"
+    profile: "https://res.cloudinary.com/doijevrqo/image/upload/v1737044748/personicon_eakhfo.png",
+    rightArrow: "https://res.cloudinary.com/doijevrqo/image/upload/v1741766130/solar_arrow-right-outline_mzteuf.png"
 }
 
 export default cloudImages;
